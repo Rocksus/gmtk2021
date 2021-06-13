@@ -23,6 +23,10 @@ public class Player : MonoBehaviour
 
     public void Move(Vector3 moveVect)
     {
+        if(!isVisible)
+        {
+            moveVect = moveVect * 1.5f;
+        }
         rb.velocity = new Vector2(moveVect.x, moveVect.y);
         if (moveVect.x > 0)
         {
