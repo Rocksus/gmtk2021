@@ -18,6 +18,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void StartGame()
+    {
+        SceneManager.LoadScene("Level 1");
+    }
+
     public void NextLevel()
     {
         int nextLevel = SceneManager.GetActiveScene().buildIndex + 1;

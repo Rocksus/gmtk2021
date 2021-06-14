@@ -23,6 +23,7 @@ public class NPC : MonoBehaviour
     Color white = new Color(1.0f, 1.0f, 1.0f, 1.0f);
     float alpha = 0.3f;
     float visibility = 0.3f;
+    bool cornered = false;
 
     void Start()
     {
@@ -60,9 +61,19 @@ public class NPC : MonoBehaviour
         linerend.SetPosition(1, playerTransform.position);
     }
 
+    public void SetCornered()
+    {
+        cornered = true;
+        animator.SetBool("cornered", true);
+        Move(Vector3.zero);
+    }
+
     void FixedUpdate()
     {
-        Move(movementVect * speed * Time.deltaTime);
+        if (!cornered)
+        {
+            Move(movementVect * speed * Time.deltaTime);
+        }
     }
 
     void Move(Vector3 moveVect)
